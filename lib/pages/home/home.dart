@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 print("TextButton pressed");
                 final snackBar = SnackBar(
-                  content: Text('ElevatedButton pressed'),
+                  content: Text('TextButton pressed'),
                   action: SnackBarAction(
                     label: 'Action',
                     onPressed: () {
