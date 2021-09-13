@@ -1,6 +1,9 @@
 # Flutter Counter Demo Extended
 
 ## Basic widgets showcase
+* Material or Cupertino 
+* Scaffold or CupertinoPageScaffold
+* AppBar or navigationBar
 * Container
 * Buttons
 * Column
@@ -8,6 +11,7 @@
 * Extended
 * Icon
 * 2 fab buttons(floating action button)
+* Snackbar with and without action
 
 ## home view seperated from main
 folder structure created.  

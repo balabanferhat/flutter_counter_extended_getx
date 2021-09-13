@@ -124,6 +124,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton.styleFrom(textStyle: TextStyle(fontSize: 22)),
               onPressed: () {
                 print("ElevatedButton pressed");
+                final snackBar =
+                    SnackBar(content: Text('ElevatedButton pressed'));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               child: const Text('ElevatedButton'),
             ),
@@ -133,6 +136,16 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextButton.styleFrom(textStyle: TextStyle(fontSize: 22)),
               onPressed: () {
                 print("TextButton pressed");
+                final snackBar = SnackBar(
+                  content: Text('ElevatedButton pressed'),
+                  action: SnackBarAction(
+                    label: 'Action',
+                    onPressed: () {
+                      // Some code to undo the change.
+                    },
+                  ),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               child: const Text('TextButton'),
             ),
