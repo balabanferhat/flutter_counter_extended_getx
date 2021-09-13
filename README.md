@@ -11,7 +11,7 @@
 # home view seperated from main
 
 # decrement test
-![picture alt](http://via.placeholder.com/200x150)
+![picture alt](https://github.com/balabanferhat/flutter_counter_extended/raw/main/counter_demo_extended.png)
 
 
 
