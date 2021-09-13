@@ -13,10 +13,11 @@
 * 2 fab buttons(floating action button)
 * Snackbar with and without action
 
-## home view seperated from main
-folder structure created.  
+## folder structure
+home view seperated from main and put in pages folder 
 pages > home
 pages > second 
+utils folder with colors.dart file
 
 ## decrement test
 like increment.  Now we have 2 fab buttons
