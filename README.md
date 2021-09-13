@@ -1,2 +1,16 @@
-# flutter_counter_extended
-Flutter Counter Demo Extended
+# Flutter Counter Demo Extended
+
+# Basic widgets showcase
+Container
+Buttons
+Column
+Row
+Extended
+Icon
+
+# decrement test
+
+
+
+
+
