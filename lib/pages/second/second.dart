@@ -1,3 +1,4 @@
+import 'package:app1/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 
 class Second extends StatefulWidget {
@@ -16,9 +17,20 @@ class _SecondState extends State<Second> {
         ),
         child: Container(
           alignment: Alignment.center,
-          child: Text(
-            "Second page",
-            style: TextStyle(fontSize: 16, color: Color.fromRGBO(0, 0, 0, 1)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Second page",
+                style:
+                    TextStyle(fontSize: 25, color: Color.fromRGBO(0, 0, 0, 1)),
+              ),
+              SizedBox(height: 40),
+              Text(
+                "This is a cupertino style page",
+                style: TextStyle(fontSize: 16, color: colorPrimary),
+              ),
+            ],
           ),
         ));
   }

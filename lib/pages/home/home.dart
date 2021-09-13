@@ -136,19 +136,21 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('TextButton'),
             ),
-            OutlinedButton(
-              //With ButtonStyle() you've to define all the required properties and
-              //with ButtonStyle.styleFrom() picks the default set values and you only change the required values.
-              style:
-                  OutlinedButton.styleFrom(textStyle: TextStyle(fontSize: 22)),
-              onPressed: () {
-                print("OutlinedButton pressed");
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Second()),
-                );
-              },
-              child: const Text('OutlinedButton ->2.page'),
+            Expanded(
+              child: OutlinedButton(
+                //With ButtonStyle() you've to define all the required properties and
+                //with ButtonStyle.styleFrom() picks the default set values and you only change the required values.
+                style: OutlinedButton.styleFrom(
+                    textStyle: TextStyle(fontSize: 22)),
+                onPressed: () {
+                  print("Expanded OutlinedButton pressed");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Second()),
+                  );
+                },
+                child: const Text('Expanded OutlinedButton ->2.page'),
+              ),
             ),
           ],
         ),
