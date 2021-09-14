@@ -1,5 +1,6 @@
 import 'package:app1/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Second extends StatefulWidget {
   Second({Key? key}) : super(key: key);
@@ -30,6 +31,17 @@ class _SecondState extends State<Second> {
                 "This is a cupertino style page",
                 style: TextStyle(fontSize: 16, color: colorPrimary),
               ),
+              Image.network(
+                'https://github.com/flutter/plugins/raw/master/packages/video_player/video_player/doc/demo_ipod.gif?raw=true',
+                height: 200,
+                loadingBuilder: (context, child, progress) {
+                  return progress == null ? child : LinearProgressIndicator();
+                },
+              ),
+              Image.asset(
+                "images/owl.jpeg",
+                height: 200,
+              )
             ],
           ),
         ));
