@@ -124,8 +124,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton.styleFrom(textStyle: TextStyle(fontSize: 22)),
               onPressed: () {
                 print("ElevatedButton pressed");
-                final snackBar =
-                    SnackBar(content: Text('ElevatedButton pressed'));
+                final snackBar = SnackBar(
+                  content: Text('ElevatedButton pressed'),
+                  duration: Duration(seconds: 1),
+                );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               child: const Text('ElevatedButton'),
@@ -138,6 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 print("TextButton pressed");
                 final snackBar = SnackBar(
                   content: Text('TextButton pressed'),
+                  duration: Duration(seconds: 1),
                   action: SnackBarAction(
                     label: 'Action',
                     onPressed: () {
@@ -145,9 +148,30 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 );
+
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               child: const Text('TextButton'),
+            ),
+            TextButton(
+              onPressed: () => showDialog<String>(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  title: const Text('AlertDialog Title'),
+                  content: const Text('AlertDialog description'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, 'Cancel'),
+                      child: const Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, 'OK'),
+                      child: const Text('OK'),
+                    ),
+                  ],
+                ),
+              ),
+              child: const Text('Alert Dialog'),
             ),
             Expanded(
               child: OutlinedButton(

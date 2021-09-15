@@ -14,6 +14,7 @@
 * Snackbar with and without action
 * Image (network, asset)
 * ListView
+* Alert Dialog
 
 ## folder structure
 * home view seperated from main and put in pages folder 
