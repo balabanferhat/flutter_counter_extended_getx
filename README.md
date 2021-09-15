@@ -13,6 +13,7 @@
 * 2 fab buttons(floating action button)
 * Snackbar with and without action
 * Image (network, asset)
+* ListView
 
 ## folder structure
 * home view seperated from main and put in pages folder 
