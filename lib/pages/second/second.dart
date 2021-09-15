@@ -1,17 +1,13 @@
+import 'package:app1/pages/home/homeController.dart';
+import 'package:app1/pages/second/secondController.dart';
 import 'package:app1/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Second extends StatefulWidget {
-  Second({Key? key}) : super(key: key);
-
-  @override
-  _SecondState createState() => _SecondState();
-}
-
-class _SecondState extends State<Second> {
-  final List<String> entries = <String>['A', 'B', 'C'];
-  final List<int> colorCodes = <int>[600, 500, 100];
+class Second extends StatelessWidget {
+  //final HomeController homeController = Get.put(HomeController());
+  final SecondController secondController = Get.put(SecondController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +20,23 @@ class _SecondState extends State<Second> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Second page",
-                style:
-                    TextStyle(fontSize: 25, color: Color.fromRGBO(0, 0, 0, 1)),
-              ),
+              Obx(() => Text(
+                    "Second page, welcome " +
+                        secondController.myUser.value.name +
+                        " " +
+                        secondController.myUser.value.surname +
+                        "(" +
+                        secondController.myUser.value.id.toString() +
+                        ")",
+                    style: TextStyle(
+                        fontSize: 25, color: Color.fromRGBO(0, 0, 0, 1)),
+                  )),
               SizedBox(height: 40),
-              Text(
-                "This is a cupertino style page",
+              /*Text(
+                "This is a cupertino style page. Counter=" +
+                    homeController.counter.value.toString(),
                 style: TextStyle(fontSize: 16, color: colorPrimary),
-              ),
+              ),*/
 
               //gif - from url  :)
               /*Image.network(
@@ -53,13 +56,14 @@ class _SecondState extends State<Second> {
                 height: 200,
                 child: ListView.builder(
                     padding: const EdgeInsets.all(8),
-                    itemCount: entries.length,
+                    itemCount: secondController.entries.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         height: 50,
-                        color: Colors.amber[colorCodes[index]],
+                        color: Colors.amber[secondController.colorCodes[index]],
                         child: Center(
-                            child: Text('Entry ${entries[index]}',
+                            child: Text(
+                                'Entry ${secondController.entries[index]}',
                                 style: TextStyle(
                                     fontSize: 16, color: colorPrimary))),
                       );

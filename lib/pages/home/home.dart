@@ -1,62 +1,18 @@
+import 'package:app1/pages/home/homeController.dart';
 import 'package:app1/pages/second/second.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter--;
-    });
-  }
+class Home extends StatelessWidget {
+  final HomeController homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text("Home"),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -79,17 +35,22 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              Text(
-                'COUNTER',
-                style: TextStyle(fontSize: 26),
+              Expanded(
+                child: Text(
+                  'COUNTER',
+                  style: TextStyle(fontSize: 26),
+                ),
+                flex: 1,
               ),
               SizedBox(
                 width: 5,
               ),
-              Text(
-                'EXAMPLE',
-                style: TextStyle(fontSize: 26),
-              ),
+              Expanded(
+                  child: Text(
+                    'EXAMPLE',
+                    style: TextStyle(fontSize: 26),
+                  ),
+                  flex: 2),
             ]),
             SizedBox(
               height: 30,
@@ -110,13 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 30,
             ),
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            Obx(() => Text(
+                  'You have pushed the button this many times:' +
+                      homeController.counter.value.toString(),
+                )),
             ElevatedButton(
               //With ButtonStyle() you've to define all the required properties and
               //with ButtonStyle.styleFrom() picks the default set values and you only change the required values.
@@ -124,11 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton.styleFrom(textStyle: TextStyle(fontSize: 22)),
               onPressed: () {
                 print("ElevatedButton pressed");
-                final snackBar = SnackBar(
+                /*final snackBar = SnackBar(
                   content: Text('ElevatedButton pressed'),
                   duration: Duration(seconds: 1),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                */
+                Get.snackbar("title", "ElevatedButton pressed",
+                    snackPosition: SnackPosition.BOTTOM);
               },
               child: const Text('ElevatedButton'),
             ),
@@ -181,10 +142,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     textStyle: TextStyle(fontSize: 22)),
                 onPressed: () {
                   print("Expanded OutlinedButton pressed");
-                  Navigator.push(
+                  /*Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Second()),
-                  );
+                  );*/
+                  //Get.to(Second()); // old way
+                  Get.to(() => Second());
                 },
                 child: const Text('Expanded OutlinedButton ->2.page'),
               ),
@@ -202,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton:
           Column(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
         FloatingActionButton(
-          onPressed: _incrementCounter,
+          onPressed: homeController.incrementCounter,
           tooltip: 'Increment',
           heroTag: "btn1_inc",
           child: Icon(Icons.add),
@@ -211,7 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
           height: 10,
         ),
         FloatingActionButton(
-            onPressed: _decrementCounter,
+            onPressed: homeController.decrementCounter,
             tooltip: 'Decrement',
             heroTag: "btn2_dec",
             child: Icon(Icons.remove)),
