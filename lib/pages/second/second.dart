@@ -60,14 +60,15 @@ class Second extends StatelessWidget {
               //RenderBox was not laid out: RenderRepaintBoundary#8fa18 relayoutBoundary=up4 NEEDS-PAINT
               //The problem is that you are placing the ListView inside a Column/Row.
               Container(
-                height: 200,
+                height: 400,
                 child: ListView.builder(
                     padding: const EdgeInsets.all(8),
                     itemCount: secondController.entries.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         height: 50,
-                        color: Colors.amber[secondController.colorCodes[index]],
+                        color:
+                            Colors.amber[secondController.getColorCode(index)],
                         child: Center(
                             child: Text(
                                 'Entry ${secondController.entries[index]}',

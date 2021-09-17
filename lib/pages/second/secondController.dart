@@ -2,9 +2,10 @@ import 'package:app1/models/user_model.dart';
 import 'package:get/get.dart';
 
 class SecondController extends GetxController {
-  final List<String> entries = <String>['A', 'B', 'C'];
+  //final List<String> entries = <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
 
+  var entries = <String>[].obs;
   var myUser = User(name: "", surname: "", id: 0).obs;
 
   @override
@@ -13,8 +14,17 @@ class SecondController extends GetxController {
     myUser.value.name = "Ferhat";
     myUser.value.surname = "Balaban";
     myUser.value.id = 1;
+
+    for (var i = 0; i < 6; i++) {
+      entries.add("elem:" + i.toString());
+    }
     // TODO: implement onInit
     super.onInit();
+  }
+
+  int getColorCode(index) {
+    var modVal = index % colorCodes.length;
+    return colorCodes[modVal];
   }
 
   @override
