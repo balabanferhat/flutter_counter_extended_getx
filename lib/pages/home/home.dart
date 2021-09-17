@@ -134,6 +134,16 @@ class Home extends StatelessWidget {
               ),
               child: const Text('Alert Dialog'),
             ),
+            TextButton(
+              onPressed: () => Get.defaultDialog(
+                title: "test",
+                middleText: "Hello world!",
+                backgroundColor: Colors.green,
+                titleStyle: TextStyle(color: Colors.white),
+                middleTextStyle: TextStyle(color: Colors.white),
+              ),
+              child: const Text('Alert Dialog2'),
+            ),
             Expanded(
               child: OutlinedButton(
                 //With ButtonStyle() you've to define all the required properties and

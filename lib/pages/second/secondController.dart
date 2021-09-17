@@ -23,4 +23,22 @@ class SecondController extends GetxController {
     // TODO: implement onClose
     super.onClose();
   }
+
+  void changeName() {
+    print("----");
+    //var tmpUser = User(name: "Fer", surname: "Bal", id: 2);
+    //myUser.value = tmpUser;
+
+    /*
+    myUser.value.name = "Fer";
+    myUser.value.surname = "Bal";
+    myUser.value.id = 2;
+
+    //update();
+    */
+    var tmpUser = myUser.value;
+    tmpUser.name = "Fer";
+    tmpUser.id = 2;
+    myUser.value = tmpUser;
+  }
 }

@@ -32,6 +32,13 @@ class Second extends StatelessWidget {
                         fontSize: 25, color: Color.fromRGBO(0, 0, 0, 1)),
                   )),
               SizedBox(height: 40),
+              ElevatedButton(
+                  onPressed: () {
+                    print("button pressed");
+                    secondController.changeName();
+                  },
+                  child: Text("isim")),
+
               /*Text(
                 "This is a cupertino style page. Counter=" +
                     homeController.counter.value.toString(),
